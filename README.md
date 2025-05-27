@@ -1,53 +1,239 @@
-# Next.js & HeroUI Template
+# Next Js + HeroUI Boilerplate
 
-This is a template for creating applications using Next.js 14 (app directory) and HeroUI (v2).
+A boilerplate to accelerate frontend development using [Next.js](https://nextjs.org/) and [HeroUI](https://www.heroui.dev/). Includes Tailwind CSS with custom theming, fetch interceptor, `useFetch` hook, reusable components, ESLint, and Prettier setup.
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/heroui/next-app-template)
+## ✨ Features
 
-## Technologies Used
+- 📝 Built-in integration with [react-hook-form](https://react-hook-form.com) for all form components
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [HeroUI v2](https://heroui.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+- ⚙️ Next.js setup
+- 🎨 HeroUI + Tailwind CSS with light & dark mode support
+- 📡 Fetch Interceptor with token auto-refresh
+- 🧲 Custom `useFetch` hook
+- 🧩 Reusable components:
+  - Input Text
+  - Input Number
+  - Button
+- ✅ ESLint & Prettier configured
+- 📁 Modular, scalable folder structure
 
-## How to Use
+## 📂 Table of Contents
 
-### Use the template with create-next-app
+- [Installation](#installation)
+- [Usage](#usage)
+- [Folder Structure](#folder-structure)
+- [API Utility & useFetch](#api-utility--usefetch)
+- [Environment Variables](#environment-variables)
+- [Color Configuration](#color-configuration)
+- [Troubleshooting](#troubleshooting)
+- [Contributors](#contributors)
+- [License](#license)
 
-To create a new project based on this template using `create-next-app`, run the following command:
+## 🛠️ Installation
 
-```bash
-npx create-next-app -e https://github.com/heroui-inc/next-app-template
+1. Clone this repository:
+
+   ```bash
+   git clone https://github.com/handi7/next-heroui-boilerplate.git
+   cd next-heroui-boilerplate
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+## 🚀 Usage
+
+Start coding by adding new pages in the `app/` directory or components in `components/`.
+
+## 📁 Folder Structure
+
+```
+.
+├── app/                 # Next.js App Router (pages/layouts)
+├── components/          # Reusable UI components
+├── config/              # Application configuration
+├── hooks/               # Custom React hooks (including useFetch)
+├── styles/              # Global styles & Tailwind config
+├── types/               # TypeScript interfaces/types
+├── public/              # Static files
+├── .vscode/             # Local editor settings
+├── .env.example         # Example environment variables
+├── .prettierrc          # Prettier configuration
+├── eslint.config.mjs    # ESLint configuration
+├── tailwind.config.js   # Tailwind configuration
+└── ...
 ```
 
-### Install dependencies
+## 📡 API Utility & useFetch
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
+### 🔁 API Interceptor (`/actions/api.ts`)
 
-```bash
-npm install
+This utility wraps native fetch with:
+
+- Authorization header from cookies
+- Automatic token refresh
+- Custom request/response interceptors
+- Prebuilt functions: `apiGET`, `apiPOST`, `apiPUT`, `apiDELETE`
+
+#### Usage with Generics:
+
+```ts
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+const response = await apiGET<User>("/user/profile");
+
+if (response.success) {
+  console.log(response.data?.name);
+} else {
+  console.error(response.error?.message);
+}
 ```
 
-### Run the development server
+### 🧲 useFetch Hook (`/hooks/useFetch.ts`)
 
-```bash
-npm run dev
+Simplifies GET requests with auto-handling of loading, error, and refetch.
+
+```tsx
+import useFetch from "@/hooks/useFetch";
+
+interface UserProfile {
+  id: number;
+  name: string;
+  email: string;
+}
+
+const { data, isLoading, error } = useFetch<UserProfile>("/user/profile");
+
+if (isLoading) return <p>Loading...</p>;
+if (error) return <p>Error: {error.message}</p>;
+
+return <p>Welcome, {data?.name}</p>;
 ```
 
-### Setup pnpm (optional)
+### 📦 Response Interfaces
 
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
+```ts
+interface ApiResponse<T = any, M = any> {
+  path?: string;
+  timestamp?: string;
+  responseTime?: string;
+  statusCode?: number;
+  success?: boolean;
+  data?: T;
+  meta?: M;
+  error?: ApiErrorResponse;
+}
 
-```bash
-public-hoist-pattern[]=*@heroui/*
+interface ApiErrorResponse {
+  type?: string;
+  message?: string;
+  errors?: Record<string, any>;
+}
 ```
 
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+## 🔐 Environment Variables
 
-## License
+Create a `.env.local` file in the root directory and define the required variables:
 
-Licensed under the [MIT license](https://github.com/heroui-inc/next-app-template/blob/main/LICENSE).
+```env
+API_URL=https://api.example.com
+```
+
+### Notes:
+
+- `API_URL` is required for all API calls to work correctly.
+- Never commit `.env.local` to public repositories. It is ignored by Git via `.gitignore`.
+
+## 📝 Form Components with React Hook Form
+
+This boilerplate includes form components that are pre-integrated with `react-hook-form`.
+
+### ✅ Example: Controlled InputText & InputNumber
+
+```tsx
+import { Button } from "@heroui/button";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+import InputNumber from "@/components/shared/input-number";
+import InputText from "@/components/shared/input-text";
+
+interface FormValues {
+  name: string;
+  age: number;
+}
+
+export default function ProfileForm() {
+  const { control, handleSubmit } = useForm<FormValues>();
+
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log(data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <InputText.WithControl control={control} name="name" label="Name" />
+      <InputNumber.WithControl control={control} name="age" label="Age" />
+      <Button type="submit">Submit</Button>
+    </form>
+  );
+}
+```
+
+These components support validation, error display, and seamless integration with your form logic.
+
+## 🎨 Color Configuration
+
+Custom theme colors defined in CSS root. Supports light and dark mode.
+
+```css
+:root {
+  --color-primary: 37 99 235;
+  --color-secondary: 249 115 22;
+  ...
+}
+
+.dark {
+  --color-primary: 59 130 246;
+  --color-secondary: 249 115 22;
+  ...
+}
+```
+
+## 🐞 Troubleshooting
+
+- **Tailwind not working?** Ensure paths are correctly set in `tailwind.config.js`
+- **Linting errors?** Run:
+  ```bash
+  npm run lint
+  ```
+- **Expired token issues?** Make sure the backend endpoint for refresh token is available.
+
+## 👤 Contributors
+
+- [@handi7](https://github.com/handi7)
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+```
+MIT License © 2025 handi7
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction...
+
+Read the full LICENSE file for details.
+```
