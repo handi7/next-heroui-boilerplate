@@ -28,7 +28,10 @@ export const addResponseInterceptor = async (interceptor: ResponseInterceptor) =
   responseInterceptors.push(interceptor);
 };
 
-const request = async <T>(url: string, options: RequestInit = {}): Promise<ApiResponse<T>> => {
+const request = async <T = any, M = any>(
+  url: string,
+  options: RequestInit = {},
+): Promise<ApiResponse<T, M>> => {
   if (!BASE_URL) {
     console.error("API URL is not defined. Please set the API_URL environment variable.");
 
@@ -109,7 +112,7 @@ const request = async <T>(url: string, options: RequestInit = {}): Promise<ApiRe
   return data;
 };
 
-export const apiGET = async <T = any>(url: string, options?: RequestInit) =>
+export const apiGET = async <T = any, M = any>(url: string, options?: RequestInit) =>
   request<T>(url, { method: "GET", ...options });
 
 export const apiPOST = async <T = any>(url: string, body: any, options?: RequestInit) =>
