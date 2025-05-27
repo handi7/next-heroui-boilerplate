@@ -199,14 +199,14 @@ Custom theme colors defined in CSS root. Supports light and dark mode.
 
 ```css
 :root {
-  --color-primary: #2563eb;
-  --color-secondary: #f97316;
+  --color-primary: 37 99 235;
+  --color-secondary: 249 115 22;
   ...
 }
 
 .dark {
-  --color-primary: #3b82f6;
-  --color-secondary: #f97316;
+  --color-primary: 59 130 246;
+  --color-secondary: 249 115 22;
   ...
 }
 ```
