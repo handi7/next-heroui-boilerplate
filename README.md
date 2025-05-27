@@ -4,6 +4,8 @@ A boilerplate to accelerate frontend development using [Next.js](https://nextjs.
 
 ## ✨ Features
 
+- 📝 Built-in integration with [react-hook-form](https://react-hook-form.com) for all form components
+
 - ⚙️ Next.js setup
 - 🎨 HeroUI + Tailwind CSS with light & dark mode support
 - 📡 Fetch Interceptor with token auto-refresh
@@ -153,6 +155,43 @@ API_URL=https://api.example.com
 
 - `API_URL` is required for all API calls to work correctly.
 - Never commit `.env.local` to public repositories. It is ignored by Git via `.gitignore`.
+
+## 📝 Form Components with React Hook Form
+
+This boilerplate includes form components that are pre-integrated with `react-hook-form`.
+
+### ✅ Example: Controlled InputText & InputNumber
+
+```tsx
+import { Button } from "@heroui/button";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+import InputNumber from "@/components/InputNumber";
+import InputText from "@/components/InputText";
+
+interface FormValues {
+  name: string;
+  age: number;
+}
+
+export default function ProfileForm() {
+  const { control, handleSubmit } = useForm<FormValues>();
+
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    console.log(data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <InputText.WithControl control={control} name="name" label="Name" />
+      <InputNumber.WithControl control={control} name="age" label="Age" />
+      <Button type="submit">Submit</Button>
+    </form>
+  );
+}
+```
+
+These components support validation, error display, and seamless integration with your form logic.
 
 ## 🎨 Color Configuration
 
