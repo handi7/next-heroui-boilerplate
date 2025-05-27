@@ -166,8 +166,8 @@ This boilerplate includes form components that are pre-integrated with `react-ho
 import { Button } from "@heroui/button";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import InputNumber from "@/components/InputNumber";
-import InputText from "@/components/InputText";
+import InputNumber from "@/components/shared/input-number";
+import InputText from "@/components/shared/input-text";
 
 interface FormValues {
   name: string;
