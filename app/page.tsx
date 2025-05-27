@@ -1,8 +1,6 @@
 "use client";
 
 export default function Home() {
-  console.log("test");
-
   return (
     <div className="flex flex-col justify-center items-center">
       <h1 className="text-lg font-semibold">Next Js with Hero UI</h1>
