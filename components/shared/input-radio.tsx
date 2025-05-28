@@ -21,14 +21,22 @@ function InputRadio({ options, ...props }: Props) {
   return (
     <RadioGroup
       size="sm"
-      classNames={{ label: cn("text-xs text-foreground", props.classNames?.label) }}
+      classNames={{
+        label: cn(
+          "text-xs text-foreground",
+          { "text-danger": props.isInvalid },
+          props.classNames?.label,
+        ),
+      }}
       {...props}
     >
       {options.map((option, index) => (
         <Radio
           key={index}
           value={option.value}
-          classNames={{ label: cn("text-sm", option.props?.classNames?.label) }}
+          classNames={{
+            label: cn("text-sm", option.props?.classNames?.label),
+          }}
           {...option.props}
         >
           {option.label}
