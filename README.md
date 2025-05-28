@@ -5,7 +5,6 @@ A boilerplate to accelerate frontend development using [Next.js](https://nextjs.
 ## ✨ Features
 
 - 📝 Built-in integration with [react-hook-form](https://react-hook-form.com) for all form components
-
 - ⚙️ Next.js setup
 - 🎨 HeroUI + Tailwind CSS with light & dark mode support
 - 📡 Fetch Interceptor with token auto-refresh
@@ -13,6 +12,10 @@ A boilerplate to accelerate frontend development using [Next.js](https://nextjs.
 - 🧩 Reusable components:
   - Input Text
   - Input Number
+  - Input Checkbox
+  - Input Radio
+  - Input Select
+  - Input Date
   - Button
 - ✅ ESLint & Prettier configured
 - 📁 Modular, scalable folder structure
@@ -24,6 +27,7 @@ A boilerplate to accelerate frontend development using [Next.js](https://nextjs.
 - [Folder Structure](#folder-structure)
 - [API Utility & useFetch](#api-utility--usefetch)
 - [Environment Variables](#environment-variables)
+- [Form Components with React Hook Form](#-form-components-with-react-hook-form)
 - [Color Configuration](#color-configuration)
 - [Troubleshooting](#troubleshooting)
 - [Contributors](#contributors)
@@ -191,7 +195,55 @@ export default function ProfileForm() {
 }
 ```
 
-These components support validation, error display, and seamless integration with your form logic.
+### ✅ Example: Controlled InputCheckbox.GroupControl
+
+```tsx
+<InputCheckbox.GroupControl
+  control={control}
+  name="hobbies"
+  label="Hobbies"
+  options={[
+    { label: "Reading", value: "reading" },
+    { label: "Gaming", value: "gaming" },
+    { label: "Coding", value: "coding" },
+  ]}
+/>
+```
+
+### ✅ Example: Controlled InputRadio.WithControl
+
+```tsx
+<InputRadio.WithControl
+  control={control}
+  name="gender"
+  label="Gender"
+  options={[
+    { label: "Male", value: "male" },
+    { label: "Female", value: "female" },
+  ]}
+/>
+```
+
+### ✅ Example: Controlled InputSelect.WithControl
+
+```tsx
+<InputSelect.WithControl
+  control={control}
+  name="country"
+  label="Country"
+  options={[
+    { label: "Indonesia", value: "ID" },
+    { label: "Japan", value: "JP" },
+    { label: "USA", value: "US" },
+  ]}
+/>
+```
+
+### ✅ Example: Controlled InputDate.WithControl
+
+```tsx
+<InputDate.WithControl control={control} name="birthdate" label="Birth Date" />
+```
 
 ## 🎨 Color Configuration
 
