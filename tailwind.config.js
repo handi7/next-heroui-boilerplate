@@ -5,7 +5,7 @@ const config = {
   content: [
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@heroui/theme/dist/components/(button|checkbox|code|date-picker|input|kbd|link|listbox|modal|navbar|number-input|radio|select|snippet|toggle|ripple|spinner|form|calendar|date-input|popover|divider|scroll-shadow).js",
+    "./node_modules/@heroui/theme/dist/components/(alert|autocomplete|badge|button|card|checkbox|chip|code|date-picker|divider|drawer|dropdown|image|input|kbd|link|listbox|modal|navbar|number-input|pagination|radio|select|snippet|spinner|toggle|table|toast|ripple|form|popover|scroll-shadow|calendar|date-input|menu|spacer).js",
   ],
 
   theme: {
