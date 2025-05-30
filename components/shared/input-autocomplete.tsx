@@ -20,8 +20,6 @@ interface Props extends Omit<AutocompleteProps<AutocompleteOptionItem>, "childre
 }
 
 function InputAutocomplete({ options, ...props }: Props) {
-  console.log(options.values());
-
   return (
     <Autocomplete
       variant="bordered"
@@ -31,7 +29,6 @@ function InputAutocomplete({ options, ...props }: Props) {
       placeholder="Type to search"
       items={options}
       {...props}
-      onSelectionChange={console.log}
     >
       {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
     </Autocomplete>
@@ -52,10 +49,11 @@ function WithControl<T extends FieldValues>(props: WithControlProps<T>) {
       control={control}
       name={name}
       rules={rules}
-      render={({ field, fieldState }) => (
+      render={({ field: { onChange, ...field }, fieldState }) => (
         <InputAutocomplete
           {...field}
           {...rest}
+          onSelectionChange={onChange}
           isInvalid={!!fieldState.error}
           errorMessage={fieldState.error?.message}
         />
