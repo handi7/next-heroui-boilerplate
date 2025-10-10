@@ -5,7 +5,8 @@ import {
   AutocompleteItem,
   AutocompleteItemProps,
   AutocompleteProps,
-} from "@heroui/autocomplete";
+  cn,
+} from "@heroui/react";
 import React from "react";
 import { Control, Controller, FieldValues, Path, RegisterOptions } from "react-hook-form";
 
@@ -29,6 +30,10 @@ function InputAutocomplete({ options, ...props }: Props) {
       placeholder="Type to search"
       items={options}
       {...props}
+      classNames={{
+        ...props.classNames,
+        popoverContent: cn("rounded-md", props.classNames?.popoverContent),
+      }}
     >
       {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
     </Autocomplete>

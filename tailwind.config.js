@@ -1,11 +1,11 @@
-import { heroui } from "@heroui/theme";
+const { heroui } = require("@heroui/react");
 
 /** @type {import('tailwindcss').Config} */
 const config = {
   content: [
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@heroui/theme/dist/components/(alert|autocomplete|badge|button|card|checkbox|chip|code|date-picker|divider|drawer|dropdown|image|input|kbd|link|listbox|modal|navbar|number-input|pagination|radio|select|snippet|spinner|toggle|table|toast|ripple|form|popover|scroll-shadow|calendar|date-input|menu|spacer).js",
+    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
 
   theme: {

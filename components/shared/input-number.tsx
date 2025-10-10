@@ -1,6 +1,6 @@
 "use client";
 
-import { NumberInput, NumberInputProps } from "@heroui/number-input";
+import { NumberInput, NumberInputProps } from "@heroui/react";
 import React from "react";
 import { Control, Controller, FieldValues, Path, RegisterOptions } from "react-hook-form";
 
