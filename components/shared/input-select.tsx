@@ -1,6 +1,6 @@
 "use client";
 
-import { Select, SelectItem, SelectItemProps, SelectProps } from "@heroui/select";
+import { Select, SelectItem, SelectItemProps, SelectProps, cn } from "@heroui/react";
 import React from "react";
 import { Control, Controller, FieldValues, Path, RegisterOptions } from "react-hook-form";
 
@@ -25,6 +25,10 @@ function InputSelect({ options, ...props }: Props) {
       labelPlacement="outside"
       placeholder="Select one of the options"
       {...props}
+      classNames={{
+        ...props.classNames,
+        popoverContent: cn("rounded-md", props.classNames?.popoverContent),
+      }}
     >
       {options.map((item) => (
         <SelectItem key={item.value}>{item.label}</SelectItem>

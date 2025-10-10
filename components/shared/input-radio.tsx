@@ -1,6 +1,6 @@
 "use client";
 
-import { Radio, RadioGroup, RadioGroupProps, RadioProps } from "@heroui/radio";
+import { Radio, RadioGroup, RadioGroupProps, RadioProps } from "@heroui/react";
 import { cn } from "@heroui/theme";
 import React from "react";
 import { Control, Controller, FieldValues, Path, RegisterOptions } from "react-hook-form";
@@ -23,7 +23,7 @@ function InputRadio({ options, ...props }: Props) {
       size="sm"
       classNames={{
         label: cn(
-          "text-xs text-foreground",
+          "text-sm text-foreground font-medium",
           { "text-danger": props.isInvalid },
           props.classNames?.label,
         ),
@@ -34,10 +34,11 @@ function InputRadio({ options, ...props }: Props) {
         <Radio
           key={index}
           value={option.value}
+          {...option.props}
           classNames={{
+            ...option.props?.classNames,
             label: cn("text-sm", option.props?.classNames?.label),
           }}
-          {...option.props}
         >
           {option.label}
         </Radio>
