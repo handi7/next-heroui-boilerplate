@@ -1,19 +1,20 @@
+"use client";
+
 import NextLink from "next/link";
 
-import { Button } from "@heroui/button";
-import { Input } from "@heroui/input";
-import { Kbd } from "@heroui/kbd";
-import { Link } from "@heroui/link";
 import {
+  Button,
   Navbar as HeroUINavbar,
+  Input,
+  Kbd,
+  Link,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-} from "@heroui/navbar";
-import { link as linkStyles } from "@heroui/theme";
+} from "@heroui/react";
 import clsx from "clsx";
 
 import {
@@ -62,10 +63,7 @@ export const Navbar = () => {
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
-                className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
-                )}
+                className={clsx("data-[active=true]:text-primary data-[active=true]:font-medium")}
                 color="foreground"
                 href={item.href}
               >

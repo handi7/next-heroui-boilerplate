@@ -1,13 +1,24 @@
 "use client";
 
-import { DatePicker, DatePickerProps } from "@heroui/date-picker";
+import { DatePicker, DatePickerProps } from "@heroui/react";
 import { getLocalTimeZone, parseAbsoluteToLocal } from "@internationalized/date";
 import React from "react";
 import { Control, Controller, FieldValues, Path, RegisterOptions } from "react-hook-form";
 
 function InputDate(props: DatePickerProps) {
+  const today = new Date().toISOString().split("T")[0];
+
   return (
-    <DatePicker variant="bordered" size="sm" radius="sm" labelPlacement="outside" {...props} />
+    <DatePicker
+      variant="bordered"
+      size="sm"
+      radius="sm"
+      labelPlacement="outside"
+      {...props}
+      classNames={{
+        calendar: ` [&_[data-date="${today}"]]:relative [&_[data-date="${today}"]::after]:content-[''] [&_[data-date="${today}"]::after]:absolute [&_[data-date="${today}"]::after]:bottom-1 [&_[data-date="${today}"]::after]:left-1/2 [&_[data-date="${today}"]::after]:-translate-x-1/2 [&_[data-date="${today}"]::after]:w-1.5 [&_[data-date="${today}"]::after]:h-1.5 [&_[data-date="${today}"]::after]:rounded-full [&_[data-date="${today}"]::after]:bg-primary`,
+      }}
+    />
   );
 }
 
