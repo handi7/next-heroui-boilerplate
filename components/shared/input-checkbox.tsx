@@ -1,13 +1,20 @@
 "use client";
 
-import { Checkbox, CheckboxGroup, CheckboxGroupProps, CheckboxProps } from "@heroui/checkbox";
+import { Checkbox, CheckboxGroup, CheckboxGroupProps, CheckboxProps } from "@heroui/react";
 import { cn } from "@heroui/theme";
 import React, { ReactNode } from "react";
 import { Control, Controller, FieldValues, Path, RegisterOptions } from "react-hook-form";
 
 function InputCheckbox(props: CheckboxProps) {
   return (
-    <Checkbox size="sm" {...props}>
+    <Checkbox
+      size="sm"
+      {...props}
+      classNames={{
+        ...props.classNames,
+        label: cn("text-sm font-medium", props.classNames?.label),
+      }}
+    >
       {props.children}
     </Checkbox>
   );
@@ -55,8 +62,9 @@ function Group({ options, ...props }: GroupProps) {
       size="sm"
       {...props}
       classNames={{
+        ...props.classNames,
         label: cn(
-          "text-xs text-foreground",
+          "text-sm text-foreground font-medium",
           { "text-danger": props.isInvalid },
           props.classNames?.label,
         ),

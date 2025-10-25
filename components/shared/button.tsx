@@ -1,6 +1,6 @@
 "use client";
 
-import { ButtonProps, Button as HeroButton } from "@heroui/button";
+import { ButtonProps, Button as HeroButton } from "@heroui/react";
 import React, { PropsWithChildren } from "react";
 
 interface Props extends PropsWithChildren, ButtonProps {}
