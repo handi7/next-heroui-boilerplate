@@ -20,7 +20,6 @@ interface Props extends RadioGroupProps {
 function InputRadio({ options, ...props }: Props) {
   return (
     <RadioGroup
-      size="sm"
       classNames={{
         label: cn(
           "text-sm text-foreground font-medium",

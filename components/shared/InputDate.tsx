@@ -11,8 +11,6 @@ function InputDate(props: DatePickerProps) {
   return (
     <DatePicker
       variant="bordered"
-      size="sm"
-      radius="sm"
       labelPlacement="outside"
       {...props}
       classNames={{

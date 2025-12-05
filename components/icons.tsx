@@ -129,3 +129,39 @@ export const SearchIcon = (props: IconSvgProps) => (
     />
   </svg>
 );
+
+export const MailIcon = (props: IconSvgProps) => (
+  <svg
+    aria-hidden="true"
+    fill="none"
+    focusable="false"
+    height="1em"
+    role="presentation"
+    viewBox="0 0 24 24"
+    width="1em"
+    {...props}
+  >
+    <path
+      d="M17 3.5H7C4 3.5 2 5 2 8.5V15.5C2 19 4 20.5 7 20.5H17C20 20.5 22 19 22 15.5V8.5C22 5 20 3.5 17 3.5ZM17.47 9.59L14.34 12.09C13.68 12.62 12.84 12.88 12 12.88C11.16 12.88 10.31 12.62 9.66 12.09L6.53 9.59C6.21 9.33 6.16 8.85 6.41 8.53C6.67 8.21 7.14 8.15 7.46 8.41L10.59 10.91C11.35 11.52 12.64 11.52 13.4 10.91L16.53 8.41C16.85 8.15 17.33 8.2 17.58 8.53C17.84 8.85 17.79 9.33 17.47 9.59Z"
+      fill="currentColor"
+    />
+  </svg>
+);
+
+export const LockIcon = (props: IconSvgProps) => (
+  <svg
+    aria-hidden="true"
+    fill="none"
+    focusable="false"
+    height="1em"
+    role="presentation"
+    viewBox="0 0 24 24"
+    width="1em"
+    {...props}
+  >
+    <path
+      d="M6 10V8C6 4.69 7 2 12 2C17 2 18 4.69 18 8V10C21 10 22 11 22 13V19C22 21 21 22 18 22H6C3 22 2 21 2 19V13C2 11 3 10 6 10ZM12 18.5C13.3807 18.5 14.5 17.3807 14.5 16C14.5 14.6193 13.3807 13.5 12 13.5C10.6193 13.5 9.5 14.6193 9.5 16C9.5 17.3807 10.6193 18.5 12 18.5ZM16.5 10V8C16.5 5.28 15.88 3.5 12 3.5C8.12 3.5 7.5 5.28 7.5 8V10H16.5Z"
+      fill="currentColor"
+    />
+  </svg>
+);

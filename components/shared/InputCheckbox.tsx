@@ -8,7 +8,6 @@ import { Control, Controller, FieldValues, Path, RegisterOptions } from "react-h
 function InputCheckbox(props: CheckboxProps) {
   return (
     <Checkbox
-      size="sm"
       {...props}
       classNames={{
         ...props.classNames,
@@ -59,7 +58,6 @@ interface GroupProps extends Omit<CheckboxGroupProps, "children"> {
 function Group({ options, ...props }: GroupProps) {
   return (
     <CheckboxGroup
-      size="sm"
       {...props}
       classNames={{
         ...props.classNames,

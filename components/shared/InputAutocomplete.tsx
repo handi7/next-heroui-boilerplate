@@ -1,47 +1,47 @@
 "use client";
 
-import { Select, SelectItem, SelectItemProps, SelectProps, cn } from "@heroui/react";
+import {
+  Autocomplete,
+  AutocompleteItem,
+  AutocompleteItemProps,
+  AutocompleteProps,
+  cn,
+} from "@heroui/react";
 import React from "react";
 import { Control, Controller, FieldValues, Path, RegisterOptions } from "react-hook-form";
 
-interface InputSelectOption {
+export interface AutocompleteOptionItem {
   value: string;
   label: string;
-  props?: SelectItemProps;
+  props?: AutocompleteItemProps;
 }
 
-export type InputSelectOptions = InputSelectOption[];
-
-interface Props extends Omit<SelectProps, "children"> {
-  options: InputSelectOptions;
+interface Props extends Omit<AutocompleteProps<AutocompleteOptionItem>, "children"> {
+  options: AutocompleteOptionItem[];
 }
 
-function InputSelect({ options, ...props }: Props) {
+function InputAutocomplete({ options, ...props }: Props) {
   return (
-    <Select
+    <Autocomplete
       variant="bordered"
-      size="sm"
-      radius="sm"
       labelPlacement="outside"
-      placeholder="Select one of the options"
+      placeholder="Type to search"
+      items={options}
       {...props}
       classNames={{
         ...props.classNames,
         popoverContent: cn("rounded-md", props.classNames?.popoverContent),
       }}
     >
-      {options.map((item) => (
-        <SelectItem key={item.value}>{item.label}</SelectItem>
-      ))}
-    </Select>
+      {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
+    </Autocomplete>
   );
 }
 
-type WithControlProps<T extends FieldValues> = Omit<SelectProps, "children"> & {
+type WithControlProps<T extends FieldValues> = Props & {
   control: Control<T>;
   name: Path<T>;
   rules?: RegisterOptions<T, Path<T>>;
-  options: InputSelectOptions;
 };
 
 function WithControl<T extends FieldValues>(props: WithControlProps<T>) {
@@ -52,10 +52,11 @@ function WithControl<T extends FieldValues>(props: WithControlProps<T>) {
       control={control}
       name={name}
       rules={rules}
-      render={({ field, fieldState }) => (
-        <InputSelect
+      render={({ field: { onChange, ...field }, fieldState }) => (
+        <InputAutocomplete
           {...field}
           {...rest}
+          onSelectionChange={onChange}
           isInvalid={!!fieldState.error}
           errorMessage={fieldState.error?.message}
         />
@@ -64,6 +65,6 @@ function WithControl<T extends FieldValues>(props: WithControlProps<T>) {
   );
 }
 
-InputSelect.WithControl = WithControl;
+InputAutocomplete.WithControl = WithControl;
 
-export default InputSelect;
+export default InputAutocomplete;

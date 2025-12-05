@@ -1,23 +1,14 @@
 "use client";
 
-import { NumberInput, NumberInputProps } from "@heroui/react";
+import { Input, InputProps } from "@heroui/react";
 import React from "react";
 import { Control, Controller, FieldValues, Path, RegisterOptions } from "react-hook-form";
 
-function InputNumber(props: NumberInputProps) {
-  return (
-    <NumberInput
-      variant="bordered"
-      size="sm"
-      radius="sm"
-      labelPlacement="outside"
-      placeholder="0"
-      {...props}
-    />
-  );
+function InputText(props: InputProps) {
+  return <Input variant="bordered" labelPlacement="outside" placeholder="Type here" {...props} />;
 }
 
-type WithControlProps<T extends FieldValues> = NumberInputProps & {
+type WithControlProps<T extends FieldValues> = InputProps & {
   control: Control<T>;
   name: Path<T>;
   rules?: RegisterOptions<T, Path<T>>;
@@ -31,11 +22,10 @@ function WithControl<T extends FieldValues>(props: WithControlProps<T>) {
       control={control}
       name={name}
       rules={rules}
-      render={({ field: { onChange, ...field }, fieldState }) => (
-        <InputNumber
+      render={({ field, fieldState }) => (
+        <InputText
           {...field}
           {...rest}
-          onValueChange={(value) => onChange(value)}
           isInvalid={!!fieldState.error}
           errorMessage={fieldState.error?.message}
         />
@@ -44,6 +34,6 @@ function WithControl<T extends FieldValues>(props: WithControlProps<T>) {
   );
 }
 
-InputNumber.WithControl = WithControl;
+InputText.WithControl = WithControl;
 
-export default InputNumber;
+export default InputText;

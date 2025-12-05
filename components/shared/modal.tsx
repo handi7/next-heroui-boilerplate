@@ -7,7 +7,7 @@ import {
   ModalHeader,
   ModalHeaderProps,
   ModalProps,
-} from "@heroui/modal";
+} from "@heroui/react";
 import { cn } from "@heroui/theme";
 import React, { ReactNode } from "react";
 
@@ -23,7 +23,7 @@ function Modal(props: Props) {
   const { title, footer, headerProps, contentProps, bodyProps, children, ...rest } = props;
 
   return (
-    <HeroModal radius="sm" placement="top" backdrop="blur" {...rest}>
+    <HeroModal placement="top" backdrop="blur" {...rest}>
       <ModalContent {...contentProps}>
         <ModalHeader {...headerProps} className={cn({ hidden: !title }, headerProps?.className)}>
           {title}

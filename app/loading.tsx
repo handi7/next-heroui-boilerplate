@@ -1,4 +1,6 @@
-import { Spinner } from "@heroui/spinner";
+"use client";
+
+import { Spinner } from "@heroui/react";
 import React from "react";
 
 function MainLoadingPage() {

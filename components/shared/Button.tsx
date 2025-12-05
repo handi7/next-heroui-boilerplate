@@ -7,7 +7,7 @@ interface Props extends PropsWithChildren, ButtonProps {}
 
 function Button({ children, ...props }: Props) {
   return (
-    <HeroButton type="button" size="sm" color="primary" radius="sm" {...props}>
+    <HeroButton type="button" color="primary" {...props}>
       {children}
     </HeroButton>
   );

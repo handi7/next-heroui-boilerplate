@@ -4,6 +4,7 @@ export interface ApiResponse<T = any, M = any> {
   responseTime?: string;
   statusCode?: number;
   success?: boolean;
+  message?: string;
   data?: T;
   meta?: M;
   error?: ApiErrorResponse;

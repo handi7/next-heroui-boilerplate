@@ -1,13 +1,13 @@
 "use client";
 
-import Button from "@/components/shared/button";
-import InputAutocomplete from "@/components/shared/input-autocomplete";
-import InputCheckbox from "@/components/shared/input-checkbox";
-import InputDate from "@/components/shared/input-date";
-import InputNumber from "@/components/shared/input-number";
-import InputRadio from "@/components/shared/input-radio";
-import InputSelect from "@/components/shared/input-select";
-import InputText from "@/components/shared/input-text";
+import Button from "@/components/shared/Button";
+import InputAutocomplete from "@/components/shared/InputAutocomplete";
+import InputCheckbox from "@/components/shared/InputCheckbox";
+import InputDate from "@/components/shared/InputDate";
+import InputNumber from "@/components/shared/InputNumber";
+import InputRadio from "@/components/shared/InputRadio";
+import InputSelect from "@/components/shared/InputSelect";
+import InputText from "@/components/shared/InputText";
 
 export default function Home() {
   return (

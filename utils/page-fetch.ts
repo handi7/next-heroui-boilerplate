@@ -7,11 +7,6 @@ interface FetchOptions extends RequestInit {
 export async function pageFetch(url: string, options: FetchOptions = {}) {
   const { authToken, ...rest } = options;
 
-  const handleLogout = async () => {
-    await fetch("/api/logout", { method: "POST" });
-    redirect("/login");
-  };
-
   const res = await fetch(url, {
     ...rest,
     headers: {
@@ -20,7 +15,7 @@ export async function pageFetch(url: string, options: FetchOptions = {}) {
     },
   });
 
-  if (res.status === 401) handleLogout();
+  if (res.status === 401) redirect("/logout");
 
   if (!res.ok) {
     throw new Error(`Request failed with status ${res.status}`);
