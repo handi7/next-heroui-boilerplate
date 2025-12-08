@@ -41,6 +41,7 @@ export default function Home() {
           </Button>
           <Button
             as={Link}
+            target="_blank"
             href="https://github.com/handi7/next-heroui-boilerplate"
             variant="bordered"
             size="lg"
