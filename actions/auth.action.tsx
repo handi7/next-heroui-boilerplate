@@ -22,7 +22,7 @@ export async function login(payload: LoginInput, callbackURL?: string) {
     cookieStore.set("user", JSON.stringify(res.data.user));
   }
 
-  redirect(callbackURL || "/");
+  redirect(callbackURL || "/dashboard");
 }
 
 export async function logout() {

@@ -1,12 +1,16 @@
 # Next Js + HeroUI Boilerplate
 
-A boilerplate to accelerate frontend development using [Next.js](https://nextjs.org/) and [HeroUI](https://www.heroui.dev/). Includes Tailwind CSS with custom theming, fetch interceptor, `useFetch` hook, reusable components, ESLint, and Prettier setup.
+![Next.js + HeroUI Boilerplate](./public/new-home-page.png)
+
+A premium, production-ready boilerplate to accelerate frontend development using [Next.js](https://nextjs.org/) and [HeroUI](https://www.heroui.dev/). Includes Tailwind CSS with custom theming, fetch interceptor, `useFetch` hook, reusable components, ESLint, and Prettier setup.
 
 ## ✨ Features
 
 - 📝 Built-in integration with [react-hook-form](https://react-hook-form.com) for all form components
-- ⚙️ Next.js setup
+- ⚙️ Next.js 15 (App Router) setup
 - 🎨 HeroUI + Tailwind CSS with light & dark mode support
+- 📄 Dedicated Documentation Page (`/docs`)
+- 📊 Dashboard Layout (`/dashboard`)
 - 📡 Fetch Interceptor with token auto-refresh
 - 🧲 Custom `useFetch` hook
 - 🧩 Reusable components:
