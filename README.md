@@ -1,6 +1,6 @@
 # Next Js + HeroUI Boilerplate
 
-![Next.js + HeroUI Boilerplate](./public/new-home-page.png)
+![Next.js + HeroUI Boilerplate](./public/home-page.png)
 
 A premium, production-ready boilerplate to accelerate frontend development using [Next.js](https://nextjs.org/) and [HeroUI](https://www.heroui.dev/). Includes Tailwind CSS with custom theming, fetch interceptor, `useFetch` hook, reusable components, ESLint, and Prettier setup.
 
