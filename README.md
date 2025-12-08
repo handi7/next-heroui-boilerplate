@@ -153,7 +153,7 @@ interface ApiErrorResponse {
 
 ## 🔐 Environment Variables
 
-Create a `.env.local` file in the root directory and define the required variables:
+Create a `.env` file in the root directory and define the required variables:
 
 ```env
 API_URL=https://api.example.com
@@ -162,7 +162,7 @@ API_URL=https://api.example.com
 ### Notes:
 
 - `API_URL` is required for all API calls to work correctly.
-- Never commit `.env.local` to public repositories. It is ignored by Git via `.gitignore`.
+- Never commit `.env` to public repositories. It is ignored by Git via `.gitignore`.
 
 ## 📝 Form Components with React Hook Form
 
